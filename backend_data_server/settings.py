@@ -1,4 +1,3 @@
-
 """
 Django settings for backend_data_server project.
 
@@ -14,7 +13,6 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 import os
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -23,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-!o)(3_=0ahu#0g$^$w%=d9@j)!&b8ka-^l@f%cmfv-1^)pn6&d'
+SECRET_KEY = 'django-insecure-(!u-p%4=r&64ely)+aypj0=6129k4ufc%#(2ppr59o(w%c3k7t'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -34,13 +32,15 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'homepage',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'homepage',
+    'demo_rest_api',
 ]
 
 MIDDLEWARE = [
@@ -58,8 +58,9 @@ ROOT_URLCONF = 'backend_data_server.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        "DIRS": [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [],
         'APP_DIRS': True,
+        "DIRS": [os.path.join(BASE_DIR, 'templates')],
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.request',
