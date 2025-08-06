@@ -14,10 +14,10 @@ class LandingAPI(APIView):
         data = ref.get()
 
         if producto_id:
-            # Buscar coincidencias por productoID
+            producto_id = producto_id.lower()  # Comparación insensible a mayúsculas
             resultados = {
                 key: value for key, value in data.items()
-                if value.get("productoID") == producto_id
+                if value.get("ProductoID", "").lower() == producto_id
             }
 
             if resultados:
