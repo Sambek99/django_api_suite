@@ -1,3 +1,7 @@
+from django.shortcuts import render
+
+# Create your views here.
+# landing_api/views.py
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -6,25 +10,11 @@ from datetime import datetime
 
 class LandingAPI(APIView):
     name = "Landing API"
-    collection_name = "landing_messages"  # o como se llame tu colección
+    collection_name = "landing_messages"  # nombre de la colección en Firebase
 
     def get(self, request):
-        producto_id = request.query_params.get('productoID', None)
         ref = db.reference(self.collection_name)
         data = ref.get()
-
-        if producto_id:
-            producto_id = producto_id.lower()  # Comparación insensible a mayúsculas
-            resultados = {
-                key: value for key, value in data.items()
-                if value.get("ProductoID", "").lower() == producto_id
-            }
-
-            if resultados:
-                return Response(resultados, status=status.HTTP_200_OK)
-            else:
-                return Response({"error": "Producto no encontrado"}, status=status.HTTP_404_NOT_FOUND)
-
         return Response(data, status=status.HTTP_200_OK)
 
     def post(self, request):
